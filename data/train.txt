@@ -1,0 +1,1 @@
+This is a sample text for training a small language model. The model will learn patterns in text and generate similar content. We can use this to test the model's capabilities on Mac's Metal backend.

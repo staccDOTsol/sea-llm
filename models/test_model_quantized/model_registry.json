@@ -1,0 +1,16 @@
+{
+  "model_type": "sea_llm",
+  "version": "1.0.0",
+  "parameters": {
+    "vocab_size": 50257,
+    "embedding_dim": 768,
+    "hidden_dim": 768,
+    "context_length": 1024,
+    "layer_count": 12,
+    "num_heads": 12
+  },
+  "weights_format": {
+    "type": "uint16",
+    "chunk_size": 60000
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "address": "CG3rq4URcAwEUNnfGZ3YHRKTZAZgyemttN1BQwypa8qj",
+  "metadata": {
+    "name": "sea_nn",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "chat",
+      "discriminator": [
+        189,
+        34,
+        82,
+        12,
+        30,
+        178,
+        146,
+        97
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "chat_state",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "input_text",
+          "type": "bytes"
+        },
+        {
+          "name": "input_length",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "initialize_chat",
+      "discriminator": [
+        4,
+        81,
+        179,
+        155,
+        220,
+        138,
+        192,
+        182
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "chat",
+          "writable": true,
+          "signer": false
+        },
+        {
+          "name": "model"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_model",
+      "discriminator": [
+        150,
+        196,
+        232,
+        118,
+        138,
+        43,
+        140,
+        244
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "registry",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "vocab_size",
+          "type": "u32"
+        },
+        {
+          "name": "embedding_dim",
+          "type": "u32"
+        },
+        {
+          "name": "hidden_dim",
+          "type": "u32"
+        },
+        {
+          "name": "context_length",
+          "type": "u32"
+        },
+        {
+          "name": "layer_count",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "upload_chunk",
+      "discriminator": [
+        130,
+        219,
+        165,
+        153,
+        119,
+        149,
+        252,
+        162
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "registry",
+          "writable": true
+        },
+        {
+          "name": "chunk",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "chunk_index",
+          "type": "u32"
+        },
+        {
+          "name": "chunk_type",
+          "type": "u8"
+        },
+        {
+          "name": "data",
+          "type": {
+            "vec": "i32"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ChatState",
+      "discriminator": [
+        67,
+        109,
+        181,
+        186,
+        97,
+        123,
+        128,
+        236
+      ]
+    },
+    {
+      "name": "ModelChunk",
+      "discriminator": [
+        254,
+        185,
+        27,
+        224,
+        107,
+        118,
+        26,
+        25
+      ]
+    },
+    {
+      "name": "ModelRegistry",
+      "discriminator": [
+        174,
+        72,
+        180,
+        46,
+        185,
+        165,
+        246,
+        200
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "E000",
+      "msg": "Invalid authority"
+    },
+    {
+      "code": 6001,
+      "name": "E001",
+      "msg": "Input too long"
+    }
+  ],
+  "types": [
+    {
+      "name": "ChatState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "model",
+            "type": "pubkey"
+          },
+          {
+            "name": "history",
+            "type": "bytes"
+          },
+          {
+            "name": "history_len",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ModelChunk",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "registry",
+            "type": "pubkey"
+          },
+          {
+            "name": "chunk_index",
+            "type": "u32"
+          },
+          {
+            "name": "chunk_type",
+            "type": "u8"
+          },
+          {
+            "name": "data",
+            "type": {
+              "vec": "i32"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ModelRegistry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "chunk_count",
+            "type": "u32"
+          },
+          {
+            "name": "vocab_size",
+            "type": "u32"
+          },
+          {
+            "name": "embedding_dim",
+            "type": "u32"
+          },
+          {
+            "name": "hidden_dim",
+            "type": "u32"
+          },
+          {
+            "name": "context_length",
+            "type": "u32"
+          },
+          {
+            "name": "layer_count",
+            "type": "u32"
+          }
+        ]
+      }
+    }
+  ]
+}
