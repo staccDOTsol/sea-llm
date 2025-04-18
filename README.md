@@ -13,7 +13,7 @@ Bored Stacc is the shit I'm too lazy or too unskillful to cook. It's a minimal i
 
 1. We post all that shit to [@RaydiumProtocol](https://twitter.com/RaydiumProtocol) launchlabs as a ticker that gets 20% creator share if it bonds
 2. If it bonds, the community decides on a builder to keep building that idea to fruition
-3. The original creator gets the creator share
+3. The new builder gets the creator share
 
 It's [@ideasdotfun](https://twitter.com/ideasdotfun) but I can use it, now, by rethinking the meta of it!
 
